@@ -1,4 +1,4 @@
-package model
+package entities
 
 import "strconv"
 
@@ -18,7 +18,7 @@ func NewStudent(id int, firstName string, lastName string, languageCode string) 
 	return *st
 }
 
-func String(student Student) string {
+func (student Student) String() string {
 	return "Id = " + strconv.Itoa(student.Id) + " ; " +
 		"FirstName = " + student.FirstName + " ; " +
 		"LastName = " + student.LastName + " ; " +

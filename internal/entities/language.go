@@ -1,4 +1,4 @@
-package model
+package entities
 
 type Language struct {
 	Code string
@@ -12,7 +12,7 @@ func NewLanguage(code string, name string) Language {
 	return *lg
 }
 
-func String(language Language) string {
+func (language Language) String() string {
 	return "Code = " + language.Code + " ; " +
 		"Name = " + language.Name
 }
