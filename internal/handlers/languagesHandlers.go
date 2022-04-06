@@ -52,7 +52,7 @@ func DeleteLanguage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("func GetLanguage")
 }
 
-func InitializeLanguagesRoutes(r *mux.Router, languageDAO *persistence.LanguageDAO) {
+func InitializeLanguagesRoutes(r *mux.Router, languageDAOMemory persistence.LanguageDAO) {
 	r.HandleFunc("/rest/languages/{code}", GetLanguage).Methods("GET")
 	r.HandleFunc("/rest/languages", GetAllLanguages).Methods("GET")
 	r.HandleFunc("/rest/languages", AddLanguage).Methods("POST")

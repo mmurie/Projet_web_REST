@@ -5,7 +5,7 @@ import (
 )
 
 type StudentDAO interface {
-	FindAll() map[string]entities.Student //triés par Id
+	FindAll() map[int]entities.Student //triés par Id
 	Find(id int) entities.Student
 	Exists(id int) bool
 	Delete(id int) bool                   //false si non trouvé
