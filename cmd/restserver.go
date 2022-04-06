@@ -35,8 +35,12 @@ func main() {
 	languageDAO := new(persistence.LanguageDAOMemory)
 	languageDAO.Languages = languages
 
-	handlers.InitializeStudentsRoutes(r, leStudentDAO)
-	handlers.InitializeLanguagesRoutes(r, leLanguageDAO)
+	studentsHandlers := new(handlers.StudentsHandlers)
+	studentsHandlers.DAO = leStudentDAO
+	studentsHandlers.InitializeStudentsRoutes(r)
+	languageHandlers := new(handlers.LanguagesHandlers)
+	languageHandlers.DAO = leLanguageDAO
+	handlers.InitializeLanguagesRoutes(r)
 
 	err := http.ListenAndServe(":8000", r)
 
