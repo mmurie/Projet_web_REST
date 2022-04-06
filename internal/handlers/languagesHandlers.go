@@ -3,7 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"internal/hardcodedData"
+	"internal/persistence"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -13,7 +13,7 @@ func GetAllLanguages(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func GetAllLanguages")
 
-	jsonString, err := json.Marshal(hardcodedData.GetAllDatas())
+	jsonString, err := json.Marshal( /*languageDAO.FindAll()*/ "")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -29,7 +29,7 @@ func GetLanguage(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	code := vars["code"]
 
-	jsonString, err := json.Marshal(hardcodedData.GetData(code))
+	jsonString, err := json.Marshal( /*languageDAO.Find(code)*/ code)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -52,7 +52,7 @@ func DeleteLanguage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("func GetLanguage")
 }
 
-func InitializeLanguagesRoutes(r *mux.Router) {
+func InitializeLanguagesRoutes(r *mux.Router, languageDAO *persistence.LanguageDAO) {
 	r.HandleFunc("/rest/languages/{code}", GetLanguage).Methods("GET")
 	r.HandleFunc("/rest/languages", GetAllLanguages).Methods("GET")
 	r.HandleFunc("/rest/languages", AddLanguage).Methods("POST")

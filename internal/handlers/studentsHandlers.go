@@ -3,7 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"internal/hardcodedData"
+	"internal/persistence"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -13,7 +13,7 @@ func GetAllStudents(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func GetAllStudents")
 
-	jsonString, err := json.Marshal(hardcodedData.GetAllDatas())
+	jsonString, err := json.Marshal( /*studentDAO.FindAll()*/ "")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -27,9 +27,9 @@ func GetStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("func GetStudent")
 
 	vars := mux.Vars(r)
-	code := vars["code"]
+	id := vars["id"]
 
-	jsonString, err := json.Marshal(hardcodedData.GetData(code))
+	jsonString, err := json.Marshal( /*studentDAO.Find(code)*/ id)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -52,7 +52,7 @@ func DeleteStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("func DeleteStudent")
 }
 
-func InitializeStudentsRoutes(r *mux.Router) {
+func InitializeStudentsRoutes(r *mux.Router, studentDAO *persistence.StudentDAO) {
 	r.HandleFunc("/rest/students/{id}", GetStudent).Methods("GET")
 	r.HandleFunc("/rest/students", GetAllStudents).Methods("GET")
 	r.HandleFunc("/rest/students", AddStudent).Methods("POST")
