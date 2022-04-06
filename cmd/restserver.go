@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"internal/entities"
 	"internal/handlers"
 	"log"
 	"net/http"
@@ -12,12 +11,6 @@ import (
 
 func main() {
 	fmt.Println(" --- PROJET WEB REST --- ")
-
-	language1 := entities.NewLanguage("js", "JavaScript")
-	language2 := entities.NewLanguage("c", "C")
-
-	fmt.Println(entities.Language.String(language1))
-	fmt.Println(entities.Language.String(language2))
 
 	r := mux.NewRouter()
 

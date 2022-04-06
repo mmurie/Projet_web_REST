@@ -1,30 +1,52 @@
 package handlers
 
 import (
+	"encoding/json"
 	"fmt"
+	"internal/hardcodedData"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
 
 func GetAllLanguages(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func getAllLanguages")
+
+	jsonString, err := json.Marshal(hardcodedData.GetAllDatas())
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Fprintf(w, string(jsonString))
+
 }
 
 func GetLanguage(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func getLanguage")
+
+	vars := mux.Vars(r)
+	code := vars["code"]
+
+	jsonString, err := json.Marshal(hardcodedData.GetData(code))
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Fprintf(w, string(jsonString))
 }
 
 func AddLanguage(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("func addLanguage")
+	fmt.Printf("func addLanguage")
 }
 
 func EditLanguage(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("func editLanguage")
+	fmt.Printf("func editLanguage")
 }
 
 func DeleteLanguage(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("func getLanguage")
+	fmt.Printf("func getLanguage")
 }
 
 func InitializeLanguageRoutes(r *mux.Router) {

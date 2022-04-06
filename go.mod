@@ -14,6 +14,9 @@ replace internal/entities => ./internal/entities
 require internal/handlers v1.0.0
 replace internal/handlers => ./internal/handlers
 
+require internal/hardcodedData v1.0.0
+replace internal/hardcodedData => ./internal/hardcodedData
+
 require internal/persistence v1.0.0
 replace internal/persistence => ./internal/persistence
 
