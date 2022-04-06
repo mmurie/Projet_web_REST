@@ -27,8 +27,7 @@ func DeleteLanguage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("func getLanguage")
 }
 
-func InitializeLanguageRoutes() {
-	r := mux.NewRouter()
+func InitializeLanguageRoutes(r *mux.Router) {
 	r.HandleFunc("/rest/languages/{code}", GetLanguage).Methods("GET")
 	r.HandleFunc("/rest/languages", GetAllLanguages).Methods("GET")
 	r.HandleFunc("/rest/languages", AddLanguage).Methods("POST")

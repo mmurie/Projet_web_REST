@@ -6,6 +6,8 @@ import (
 	"internal/handlers"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func main() {
@@ -17,9 +19,11 @@ func main() {
 	fmt.Println(entities.Language.String(language1))
 	fmt.Println(entities.Language.String(language2))
 
-	err := http.ListenAndServe(":8000", nil)
+	r := mux.NewRouter()
 
-	handlers.InitializeLanguageRoutes()
+	handlers.InitializeLanguageRoutes(r)
+
+	err := http.ListenAndServe(":8000", r)
 
 	if err != nil {
 		log.Fatal(err)
