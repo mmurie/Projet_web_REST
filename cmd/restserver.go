@@ -14,7 +14,8 @@ func main() {
 
 	r := mux.NewRouter()
 
-	handlers.InitializeLanguageRoutes(r)
+	handlers.InitializeStudentsRoutes(r)
+	handlers.InitializeLanguagesRoutes(r)
 
 	err := http.ListenAndServe(":8000", r)
 

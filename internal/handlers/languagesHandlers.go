@@ -11,7 +11,7 @@ import (
 
 func GetAllLanguages(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
-	fmt.Println("func getAllLanguages")
+	fmt.Println("func GetAllLanguages")
 
 	jsonString, err := json.Marshal(hardcodedData.GetAllDatas())
 	if err != nil {
@@ -24,7 +24,7 @@ func GetAllLanguages(w http.ResponseWriter, r *http.Request) {
 
 func GetLanguage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
-	fmt.Println("func getLanguage")
+	fmt.Println("func GetLanguage")
 
 	vars := mux.Vars(r)
 	code := vars["code"]
@@ -38,18 +38,21 @@ func GetLanguage(w http.ResponseWriter, r *http.Request) {
 }
 
 func AddLanguage(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("func addLanguage")
+	fmt.Println(" - - - - - - - - - - - ")
+	fmt.Println("func AddLanguage")
 }
 
 func EditLanguage(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("func editLanguage")
+	fmt.Println(" - - - - - - - - - - - ")
+	fmt.Println("func EditLanguage")
 }
 
 func DeleteLanguage(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("func getLanguage")
+	fmt.Println(" - - - - - - - - - - - ")
+	fmt.Println("func GetLanguage")
 }
 
-func InitializeLanguageRoutes(r *mux.Router) {
+func InitializeLanguagesRoutes(r *mux.Router) {
 	r.HandleFunc("/rest/languages/{code}", GetLanguage).Methods("GET")
 	r.HandleFunc("/rest/languages", GetAllLanguages).Methods("GET")
 	r.HandleFunc("/rest/languages", AddLanguage).Methods("POST")
