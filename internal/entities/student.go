@@ -3,11 +3,11 @@ package entities
 import "strconv"
 
 type Student struct {
-	Id           int
-	FirstName    string
-	LastName     string
-	Age          int
-	LanguageCode string
+	Id           int    `json:"Id"`
+	FirstName    string `json:"FirstName"`
+	LastName     string `json:"LastName"`
+	Age          int    `json:"Age"`
+	LanguageCode string `json:"LanguageCode"`
 }
 
 func NewStudent(id int, firstName string, lastName string, age int, languageCode string) Student {

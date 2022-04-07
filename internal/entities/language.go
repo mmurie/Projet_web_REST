@@ -1,8 +1,8 @@
 package entities
 
 type Language struct {
-	Code string
-	Name string
+	Code string `json:"Code"`
+	Name string `json:"Name"`
 }
 
 func NewLanguage(code string, name string) Language {
