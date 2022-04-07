@@ -24,23 +24,21 @@ func main() {
 	students := make(map[int]entities.Student)
 	students[1] = student1
 	students[2] = student2
-	studentDAO := new(persistence.StudentDAOMemory)
-	studentDAO.Students = students
+	leStudentDAO.Students = students
 
 	language1 := entities.NewLanguage("js", "JavaScript")
 	language2 := entities.NewLanguage("c", "C")
 	languages := make(map[string]entities.Language)
 	languages["js"] = language1
 	languages["c"] = language2
-	languageDAO := new(persistence.LanguageDAOMemory)
-	languageDAO.Languages = languages
+	leLanguageDAO.Languages = languages
 
 	studentsHandlers := new(handlers.StudentsHandlers)
 	studentsHandlers.DAO = leStudentDAO
 	studentsHandlers.InitializeStudentsRoutes(r)
 	languageHandlers := new(handlers.LanguagesHandlers)
 	languageHandlers.DAO = leLanguageDAO
-	handlers.InitializeLanguagesRoutes(r)
+	languageHandlers.InitializeLanguagesRoutes(r)
 
 	err := http.ListenAndServe(":8000", r)
 

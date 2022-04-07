@@ -61,11 +61,10 @@ func DeleteStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("func DeleteStudent")
 }
 
-func (sh StudentsHandlers) InitializeStudentsRoutes(r *mux.Router, studentDAO persistence.StudentDAO) {
+func (sh StudentsHandlers) InitializeStudentsRoutes(r *mux.Router) {
 	r.HandleFunc("/rest/students/{id}", sh.GetStudent).Methods("GET")
 	r.HandleFunc("/rest/students", sh.GetAllStudents).Methods("GET")
 	r.HandleFunc("/rest/students", AddStudent).Methods("POST")
 	r.HandleFunc("/rest/students", EditStudent).Methods("PUT")
 	r.HandleFunc("/rest/students/{id}", DeleteStudent).Methods("DELETE")
-
 }
