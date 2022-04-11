@@ -55,14 +55,14 @@ func (bdb *BoltDb) DbPut(bucketName string, key string, value string) {
 }
 
 func (bdb *BoltDb) DbGet(bucketName string, key string) string {
-
+	var data string
 	err := bdb.Db.View(func(tx *bolt.Tx) error {
 		bucket := tx.Bucket([]byte(bucketName))
 		if bucket == nil {
 			return fmt.Errorf("bucket \"%q\" not found", bucketName)
 		}
 		val := bucket.Get([]byte(key))
-		fmt.Println(val)
+		data = string(val)
 
 		return nil
 	})
@@ -70,7 +70,7 @@ func (bdb *BoltDb) DbGet(bucketName string, key string) string {
 	if err != nil {
 		log.Fatal(err)
 	}
-	return ""
+	return data
 }
 
 func (bdb *BoltDb) DbGetAll(bucketName string) []string {
@@ -86,7 +86,6 @@ func (bdb *BoltDb) DbGetAll(bucketName string) []string {
 
 		for k, v := cursor.First(); k != nil; k, v = cursor.Next() {
 			data = append(data, string(v))
-			fmt.Println(v)
 		}
 		return nil
 	})
@@ -94,7 +93,7 @@ func (bdb *BoltDb) DbGetAll(bucketName string) []string {
 	if err != nil {
 		log.Fatal(err)
 	}
-	return nil
+	return data
 }
 
 func (bdb *BoltDb) DbDelete(bucketName string, key string) {
