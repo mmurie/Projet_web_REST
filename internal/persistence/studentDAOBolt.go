@@ -39,7 +39,7 @@ func (studentDAOBolt *StudentDAOBolt) Find(id int) entities.Student {
 	student := new(entities.Student)
 	decode_err := json.Unmarshal([]byte(studentString), &student)
 	if decode_err != nil {
-		log.Fatal(decode_err)
+		//log.Fatal(decode_err)
 	}
 	return *student
 }

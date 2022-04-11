@@ -38,7 +38,7 @@ func (languageDAOBolt *LanguageDAOBolt) Find(code string) entities.Language {
 	language := new(entities.Language)
 	decode_err := json.Unmarshal([]byte(languageString), &language)
 	if decode_err != nil {
-		log.Fatal(decode_err)
+		//log.Fatal(decode_err)
 	}
 	return *language
 }
