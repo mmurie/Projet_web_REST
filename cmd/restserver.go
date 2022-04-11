@@ -40,6 +40,15 @@ func main() {
 	languageHandlers.DAO = leLanguageDAO
 	languageHandlers.InitializeLanguagesRoutes(r)
 
+	bdd := new(persistence.BoltDb)
+	bdd.DbOpen("la_bdd")
+	bdd.DbCreateBucket("languages")
+	bdd.DbCreateBucket("students")
+	bdd.DbPut("languages", "Code", "js")
+	bdd.DbPut("languages", "Name", "JavaScript")
+
+	defer bdd.DbClose()
+
 	err := http.ListenAndServe(":8000", r)
 
 	if err != nil {
