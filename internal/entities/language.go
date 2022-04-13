@@ -1,5 +1,6 @@
 package entities
 
+// Un language de programmation
 type Language struct {
 	Code string `json:"Code"`
 	Name string `json:"Name"`
@@ -15,4 +16,11 @@ func NewLanguage(code string, name string) Language {
 func (language Language) String() string {
 	return "Code = " + language.Code + " ; " +
 		"Name = " + language.Name
+}
+
+// Language response payload
+// swagger:response languageRes
+type swaggLanguageRes struct {
+	// in:body
+	Body Language
 }

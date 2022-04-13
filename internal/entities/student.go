@@ -2,6 +2,7 @@ package entities
 
 import "strconv"
 
+// Un étudiant
 type Student struct {
 	Id           int    `json:"Id"`
 	FirstName    string `json:"FirstName"`
@@ -26,4 +27,11 @@ func (student Student) String() string {
 		"LastName = " + student.LastName + " ; " +
 		"Age = " + strconv.Itoa(student.Age) + " ; " +
 		"LanguageCode = " + student.LanguageCode
+}
+
+// Student response payload
+// swagger:response studentRes
+type swaggStudentRes struct {
+	// in:body
+	Body Student
 }

@@ -1,0 +1,89 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "Projet de LP MiAR de création d'une API REST en Go",
+    "title": "PROJET API WEB REST EN GO",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8000",
+  "basePath": "/rest",
+  "paths": {
+    "/languages": {
+      "get": {
+        "tags": [
+          "languages"
+        ],
+        "summary": "Renvoie la liste de tous les languages de prorgammation",
+        "operationId": "GetAllLanguages",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/languageRes"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Language": {
+      "description": "Language request model",
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "x-go-package": "internal/entities"
+    },
+    "Student": {
+      "description": "Un étudiant",
+      "type": "object",
+      "properties": {
+        "Age": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "FirstName": {
+          "type": "string"
+        },
+        "Id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "LanguageCode": {
+          "type": "string"
+        },
+        "LastName": {
+          "type": "string"
+        }
+      },
+      "x-go-package": "internal/entities"
+    }
+  },
+  "responses": {
+    "languageRes": {
+      "description": "Language response payload",
+      "schema": {
+        "$ref": "#/definitions/Language"
+      }
+    },
+    "studentRes": {
+      "description": "Student response payload",
+      "schema": {
+        "$ref": "#/definitions/Student"
+      }
+    }
+  }
+}

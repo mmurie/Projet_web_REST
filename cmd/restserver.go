@@ -1,3 +1,21 @@
+// PROJET API WEB REST EN GO
+//
+// Projet de LP MiAR de création d'une API REST en Go
+//
+// Terms Of Service:
+//
+//		Schemes: http, https
+//		Host: localhost:8000
+//		BasePath: /rest
+//		Version: 1.0.0
+//
+//		Consumes:
+//		- application/json
+//
+//		Produces:
+//		- application/json
+//
+// swagger:meta
 package main
 
 import (
@@ -18,22 +36,25 @@ func main() {
 
 	r := mux.NewRouter()
 
-	/*leStudentDAO := new(persistence.StudentDAOMemory)
-	leLanguageDAO := new(persistence.LanguageDAOMemory)
+	//Version avec DAOMemory
+	/*
+		leStudentDAO := new(persistence.StudentDAOMemory)
+		leLanguageDAO := new(persistence.LanguageDAOMemory)
 
-	student1 := entities.NewStudent(1, "Michel", "Baie", 25, "js")
-	student2 := entities.NewStudent(2, "Paul", "Patine", 19, "c")
-	students := make(map[int]entities.Student)
-	students[1] = student1
-	students[2] = student2
-	leStudentDAO.Students = students
+		student1 := entities.NewStudent(1, "Michel", "Baie", 25, "js")
+		student2 := entities.NewStudent(2, "Paul", "Patine", 19, "c")
+		students := make(map[int]entities.Student)
+		students[1] = student1
+		students[2] = student2
+		leStudentDAO.Students = students
 
-	language1 := entities.NewLanguage("js", "JavaScript")
-	language2 := entities.NewLanguage("c", "C")
-	languages := make(map[string]entities.Language)
-	languages["js"] = language1
-	languages["c"] = language2
-	leLanguageDAO.Languages = languages*/
+		language1 := entities.NewLanguage("js", "JavaScript")
+		language2 := entities.NewLanguage("c", "C")
+		languages := make(map[string]entities.Language)
+		languages["js"] = language1
+		languages["c"] = language2
+		leLanguageDAO.Languages = languages
+	*/
 
 	bdd := new(persistence.BoltDb)
 	bdd.DbOpen("bdd.db")
