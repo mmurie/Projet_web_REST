@@ -45,5 +45,5 @@ type swaggStudentRes struct {
 // swagger:response studentsRes
 type swaggStudentsRes struct {
 	// in:body
-	Body []Student
+	Body map[string]Student
 }

@@ -31,5 +31,5 @@ type swaggLanguageRes struct {
 // swagger:response languagesRes
 type swaggLanguagesRes struct {
 	// in:body
-	Body []Language
+	Body map[string]Language
 }

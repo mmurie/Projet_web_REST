@@ -103,8 +103,8 @@
     "languagesRes": {
       "description": "Response payload pour une liste de langages",
       "schema": {
-        "type": "array",
-        "items": {
+        "type": "object",
+        "additionalProperties": {
           "$ref": "#/definitions/Language"
         }
       }
@@ -118,8 +118,8 @@
     "studentsRes": {
       "description": "Response payload pour une liste d'étudiants",
       "schema": {
-        "type": "array",
-        "items": {
+        "type": "object",
+        "additionalProperties": {
           "$ref": "#/definitions/Student"
         }
       }
