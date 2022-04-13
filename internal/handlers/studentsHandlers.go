@@ -16,12 +16,14 @@ type StudentsHandlers struct {
 	DAO persistence.StudentDAO
 }
 
-// swagger:operation GET /students students GetAllStudents
+// swagger:operation GET /students Students GetAllStudents
 // ---
 // summary: Renvoie la liste de tous les étudiants
 // responses:
 //   "200":
 //     "$ref": "#/responses/studentsRes"
+//   "400":
+//     "$ref": "#/responses/badReq"
 func (sh StudentsHandlers) GetAllStudents(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func GetAllStudents")
@@ -34,6 +36,22 @@ func (sh StudentsHandlers) GetAllStudents(w http.ResponseWriter, r *http.Request
 	fmt.Fprintf(w, string(jsonString))
 }
 
+// swagger:operation GET /students/{id} Students GetStudents
+// ---
+// summary: Renvoie l'étudiant d'id spécifié
+// parameters:
+// - name: id
+//   in: path
+//   description: id de l'étudiant
+//   type: int
+//   required: true
+// responses:
+//   "200":
+//     "$ref": "#/responses/studentRes"
+//   "400":
+//     "$ref": "#/responses/badReq"
+//   "404":
+//     "$ref": "#/responses/notFoundReq"
 func (sh StudentsHandlers) GetStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func GetStudent")

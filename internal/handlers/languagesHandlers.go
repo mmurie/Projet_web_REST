@@ -15,12 +15,14 @@ type LanguagesHandlers struct {
 	DAO persistence.LanguageDAO
 }
 
-// swagger:operation GET /languages languages GetAllLanguages
+// swagger:operation GET /languages Languages GetAllLanguages
 // ---
 // summary: Renvoie la liste de tous les langages de prorgammation
 // responses:
 //   "200":
 //     "$ref": "#/responses/languagesRes"
+//   "400":
+//     "$ref": "#/responses/badReq"
 func (lh *LanguagesHandlers) GetAllLanguages(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func GetAllLanguages")
@@ -34,6 +36,22 @@ func (lh *LanguagesHandlers) GetAllLanguages(w http.ResponseWriter, r *http.Requ
 
 }
 
+// swagger:operation GET /languages/{code} Languages GetLanguages
+// ---
+// summary: Renvoie le langage ayant le code spécifié
+// parameters:
+// - name: id
+//   in: path
+//   description: code du langage
+//   type: string
+//   required: true
+// responses:
+//   "200":
+//     "$ref": "#/responses/languageRes"
+//   "400":
+//     "$ref": "#/responses/badReq"
+//   "404":
+//     "$ref": "#/responses/notFoundReq"
 func (lh *LanguagesHandlers) GetLanguage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func GetLanguage")

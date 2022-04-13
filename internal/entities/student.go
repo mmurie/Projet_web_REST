@@ -33,17 +33,3 @@ func (student Student) String() string {
 		"Age = " + strconv.Itoa(student.Age) + " ; " +
 		"LanguageCode = " + student.LanguageCode
 }
-
-// Response payload pour un étudiant
-// swagger:response studentRes
-type swaggStudentRes struct {
-	// in:body
-	Body Student
-}
-
-// Response payload pour une liste d'étudiants
-// swagger:response studentsRes
-type swaggStudentsRes struct {
-	// in:body
-	Body map[string]Student
-}

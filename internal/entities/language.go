@@ -19,17 +19,3 @@ func (language Language) String() string {
 	return "Code = " + language.Code + " ; " +
 		"Name = " + language.Name
 }
-
-// Response payload pour un langage
-// swagger:response languageRes
-type swaggLanguageRes struct {
-	// in:body
-	Body Language
-}
-
-// Response payload pour une liste de langages
-// swagger:response languagesRes
-type swaggLanguagesRes struct {
-	// in:body
-	Body map[string]Language
-}

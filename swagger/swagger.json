@@ -21,13 +21,45 @@
     "/languages": {
       "get": {
         "tags": [
-          "languages"
+          "Languages"
         ],
         "summary": "Renvoie la liste de tous les langages de prorgammation",
         "operationId": "GetAllLanguages",
         "responses": {
           "200": {
             "$ref": "#/responses/languagesRes"
+          },
+          "400": {
+            "$ref": "#/responses/badReq"
+          }
+        }
+      }
+    },
+    "/languages/{code}": {
+      "get": {
+        "tags": [
+          "Languages"
+        ],
+        "summary": "Renvoie le langage ayant le code spécifié",
+        "operationId": "GetLanguages",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "code du langage",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/languageRes"
+          },
+          "400": {
+            "$ref": "#/responses/badReq"
+          },
+          "404": {
+            "$ref": "#/responses/notFoundReq"
           }
         }
       }
@@ -35,13 +67,45 @@
     "/students": {
       "get": {
         "tags": [
-          "students"
+          "Students"
         ],
         "summary": "Renvoie la liste de tous les étudiants",
         "operationId": "GetAllStudents",
         "responses": {
           "200": {
             "$ref": "#/responses/studentsRes"
+          },
+          "400": {
+            "$ref": "#/responses/badReq"
+          }
+        }
+      }
+    },
+    "/students/{id}": {
+      "get": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Renvoie l'étudiant d'id spécifié",
+        "operationId": "GetStudents",
+        "parameters": [
+          {
+            "type": "int",
+            "description": "id de l'étudiant",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/studentRes"
+          },
+          "400": {
+            "$ref": "#/responses/badReq"
+          },
+          "404": {
+            "$ref": "#/responses/notFoundReq"
           }
         }
       }
@@ -94,6 +158,20 @@
     }
   },
   "responses": {
+    "badReq": {
+      "description": "Erreur 400 : Bad Request",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "HTTP status code 400 -  Bad Request",
+            "type": "integer",
+            "format": "int64",
+            "x-go-name": "Code"
+          }
+        }
+      }
+    },
     "languageRes": {
       "description": "Response payload pour un langage",
       "schema": {
@@ -106,6 +184,20 @@
         "type": "object",
         "additionalProperties": {
           "$ref": "#/definitions/Language"
+        }
+      }
+    },
+    "notFoundReq": {
+      "description": "Erreur 404 : Not Found",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "HTTP status code 404 -  Not Found",
+            "type": "integer",
+            "format": "int64",
+            "x-go-name": "Code"
+          }
         }
       }
     },
