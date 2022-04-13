@@ -23,7 +23,7 @@
         "tags": [
           "languages"
         ],
-        "summary": "Renvoie la liste de tous les languages de prorgammation",
+        "summary": "Renvoie la liste de tous les langages de prorgammation",
         "operationId": "GetAllLanguages",
         "responses": {
           "200": {
@@ -31,17 +31,33 @@
           }
         }
       }
+    },
+    "/students": {
+      "get": {
+        "tags": [
+          "students"
+        ],
+        "summary": "Renvoie la liste de tous les étudiants",
+        "operationId": "GetAllStudents",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/studentsRes"
+          }
+        }
+      }
     }
   },
   "definitions": {
     "Language": {
-      "description": "Un language de programmation",
+      "description": "Un langage de programmation",
       "type": "object",
       "properties": {
         "Code": {
+          "description": "Le code unique du langage",
           "type": "string"
         },
         "Name": {
+          "description": "Le nom du langage",
           "type": "string"
         }
       },
@@ -52,21 +68,25 @@
       "type": "object",
       "properties": {
         "Age": {
+          "description": "L'âge de l'étudiant",
           "type": "integer",
           "format": "int64"
         },
         "FirstName": {
+          "description": "Le prénom de l'étudiant",
           "type": "string"
         },
         "Id": {
-          "description": "L'identifiant de l'étudiant",
+          "description": "L'identifiant unique de l'étudiant",
           "type": "integer",
           "format": "int64"
         },
         "LanguageCode": {
+          "description": "Le code du langage de programmation de l'étudiant",
           "type": "string"
         },
         "LastName": {
+          "description": "Le nom de l'étudiant",
           "type": "string"
         }
       },
@@ -75,13 +95,13 @@
   },
   "responses": {
     "languageRes": {
-      "description": "Response payload pour un language",
+      "description": "Response payload pour un langage",
       "schema": {
         "$ref": "#/definitions/Language"
       }
     },
     "languagesRes": {
-      "description": "Response payload pour une liste de languages",
+      "description": "Response payload pour une liste de langages",
       "schema": {
         "type": "array",
         "items": {

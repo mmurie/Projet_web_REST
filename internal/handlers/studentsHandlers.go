@@ -16,6 +16,12 @@ type StudentsHandlers struct {
 	DAO persistence.StudentDAO
 }
 
+// swagger:operation GET /students students GetAllStudents
+// ---
+// summary: Renvoie la liste de tous les étudiants
+// responses:
+//   "200":
+//     "$ref": "#/responses/studentsRes"
 func (sh StudentsHandlers) GetAllStudents(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func GetAllStudents")

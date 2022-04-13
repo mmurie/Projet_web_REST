@@ -17,7 +17,7 @@ type LanguagesHandlers struct {
 
 // swagger:operation GET /languages languages GetAllLanguages
 // ---
-// summary: Renvoie la liste de tous les languages de prorgammation
+// summary: Renvoie la liste de tous les langages de prorgammation
 // responses:
 //   "200":
 //     "$ref": "#/responses/languagesRes"

@@ -4,11 +4,15 @@ import "strconv"
 
 // Un étudiant
 type Student struct {
-	//L'identifiant de l'étudiant
-	Id           int    `json:"Id"`
-	FirstName    string `json:"FirstName"`
-	LastName     string `json:"LastName"`
-	Age          int    `json:"Age"`
+	//L'identifiant unique de l'étudiant
+	Id int `json:"Id"`
+	//Le prénom de l'étudiant
+	FirstName string `json:"FirstName"`
+	//Le nom de l'étudiant
+	LastName string `json:"LastName"`
+	//L'âge de l'étudiant
+	Age int `json:"Age"`
+	//Le code du langage de programmation de l'étudiant
 	LanguageCode string `json:"LanguageCode"`
 }
 
