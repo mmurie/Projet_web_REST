@@ -33,6 +33,39 @@
             "$ref": "#/responses/badReq"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Languages"
+        ],
+        "summary": "Ajoute un nouveau langage de progammation",
+        "operationId": "AddLanguage",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "code du langage",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "Le langage à ajouter",
+            "name": "language",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Language"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/responses/booleanRes"
+          },
+          "400": {
+            "$ref": "#/responses/badReq"
+          }
+        }
       }
     },
     "/languages/{code}": {
@@ -62,6 +95,78 @@
             "$ref": "#/responses/notFoundReq"
           }
         }
+      },
+      "put": {
+        "tags": [
+          "Languages"
+        ],
+        "summary": "Modifie un langage de progammation",
+        "operationId": "EditLanguage",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "code du langage",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "Le langage à modifier",
+            "name": "language",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Language"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/booleanRes"
+          },
+          "400": {
+            "$ref": "#/responses/badReq"
+          },
+          "404": {
+            "$ref": "#/responses/notFoundReq"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Languages"
+        ],
+        "summary": "Supprime un langage de progammation",
+        "operationId": "DeleteLanguage",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "code du langage",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "Le langage à supprimer",
+            "name": "language",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Language"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/booleanRes"
+          },
+          "400": {
+            "$ref": "#/responses/badReq"
+          },
+          "404": {
+            "$ref": "#/responses/notFoundReq"
+          }
+        }
       }
     },
     "/students": {
@@ -74,6 +179,32 @@
         "responses": {
           "200": {
             "$ref": "#/responses/studentsRes"
+          },
+          "400": {
+            "$ref": "#/responses/badReq"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Ajoute un nouvel étudiant",
+        "operationId": "AddStudent",
+        "parameters": [
+          {
+            "description": "L'étudiant à ajouter",
+            "name": "student",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/responses/booleanRes"
           },
           "400": {
             "$ref": "#/responses/badReq"
@@ -100,6 +231,78 @@
         "responses": {
           "200": {
             "$ref": "#/responses/studentRes"
+          },
+          "400": {
+            "$ref": "#/responses/badReq"
+          },
+          "404": {
+            "$ref": "#/responses/notFoundReq"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Modifie un étudiant",
+        "operationId": "EditStudent",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "id de l'étudiant",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "L'étudiant à modifier",
+            "name": "student",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/booleanRes"
+          },
+          "400": {
+            "$ref": "#/responses/badReq"
+          },
+          "404": {
+            "$ref": "#/responses/notFoundReq"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Supprime un étudiant",
+        "operationId": "DeleteStudent",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "id de l'étudiant",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "L'étudiant à supprimer",
+            "name": "student",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/booleanRes"
           },
           "400": {
             "$ref": "#/responses/badReq"
@@ -170,6 +373,12 @@
             "x-go-name": "Code"
           }
         }
+      }
+    },
+    "booleanRes": {
+      "description": "True si l'opération est un succès, false sinon",
+      "schema": {
+        "type": "boolean"
       }
     },
     "languageRes": {

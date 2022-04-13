@@ -47,3 +47,7 @@ type swaggReqNotFound struct {
 		Code int `json:"code"`
 	}
 }
+
+// True si l'opération est un succès, false sinon
+// swagger:response booleanRes
+type swaggBooleanRes bool

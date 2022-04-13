@@ -67,6 +67,26 @@ func (lh *LanguagesHandlers) GetLanguage(w http.ResponseWriter, r *http.Request)
 	fmt.Fprintf(w, string(jsonString))
 }
 
+// swagger:operation POST /languages Languages AddLanguage
+// ---
+// summary: Ajoute un nouveau langage de progammation
+// parameters:
+// - name: id
+//   in: path
+//   description: code du langage
+//   type: string
+//   required: true
+// - name: language
+//   description: Le langage à ajouter
+//   in: body
+//   required: true
+//   schema:
+//     "$ref": "#/definitions/Language"
+// responses:
+//   "201":
+//     "$ref": "#/responses/booleanRes"
+//   "400":
+//     "$ref": "#/responses/badReq"
 func (lh *LanguagesHandlers) AddLanguage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func AddLanguage")
@@ -84,6 +104,28 @@ func (lh *LanguagesHandlers) AddLanguage(w http.ResponseWriter, r *http.Request)
 	fmt.Fprintf(w, string(isOk))
 }
 
+// swagger:operation PUT /languages/{code} Languages EditLanguage
+// ---
+// summary: Modifie un langage de progammation
+// parameters:
+// - name: id
+//   in: path
+//   description: code du langage
+//   type: string
+//   required: true
+// - name: language
+//   description: Le langage à modifier
+//   in: body
+//   required: true
+//   schema:
+//     "$ref": "#/definitions/Language"
+// responses:
+//   "200":
+//     "$ref": "#/responses/booleanRes"
+//   "400":
+//     "$ref": "#/responses/badReq"
+//   "404":
+//     "$ref": "#/responses/notFoundReq"
 func (lh *LanguagesHandlers) EditLanguage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func EditLanguage")
@@ -102,6 +144,28 @@ func (lh *LanguagesHandlers) EditLanguage(w http.ResponseWriter, r *http.Request
 
 }
 
+// swagger:operation DELETE /languages/{code} Languages DeleteLanguage
+// ---
+// summary: Supprime un langage de progammation
+// parameters:
+// - name: id
+//   in: path
+//   description: code du langage
+//   type: string
+//   required: true
+// - name: language
+//   description: Le langage à supprimer
+//   in: body
+//   required: true
+//   schema:
+//     "$ref": "#/definitions/Language"
+// responses:
+//   "200":
+//     "$ref": "#/responses/booleanRes"
+//   "400":
+//     "$ref": "#/responses/badReq"
+//   "404":
+//     "$ref": "#/responses/notFoundReq"
 func (lh *LanguagesHandlers) DeleteLanguage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func DeleteLanguage")

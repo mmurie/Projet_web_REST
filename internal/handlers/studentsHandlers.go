@@ -72,6 +72,21 @@ func (sh StudentsHandlers) GetStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(jsonString))
 }
 
+// swagger:operation POST /students Students AddStudent
+// ---
+// summary: Ajoute un nouvel étudiant
+// parameters:
+// - name: student
+//   description: L'étudiant à ajouter
+//   in: body
+//   required: true
+//   schema:
+//     "$ref": "#/definitions/Student"
+// responses:
+//   "201":
+//     "$ref": "#/responses/booleanRes"
+//   "400":
+//     "$ref": "#/responses/badReq"
 func (sh StudentsHandlers) AddStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func AddStudent")
@@ -89,6 +104,28 @@ func (sh StudentsHandlers) AddStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(isOk))
 }
 
+// swagger:operation PUT /students/{id} Students EditStudent
+// ---
+// summary: Modifie un étudiant
+// parameters:
+// - name: id
+//   in: path
+//   description: id de l'étudiant
+//   type: string
+//   required: true
+// - name: student
+//   description: L'étudiant à modifier
+//   in: body
+//   required: true
+//   schema:
+//     "$ref": "#/definitions/Student"
+// responses:
+//   "200":
+//     "$ref": "#/responses/booleanRes"
+//   "400":
+//     "$ref": "#/responses/badReq"
+//   "404":
+//     "$ref": "#/responses/notFoundReq"
 func (sh StudentsHandlers) EditStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func EditStudent")
@@ -106,6 +143,28 @@ func (sh StudentsHandlers) EditStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(isOk))
 }
 
+// swagger:operation DELETE /students/{id} Students DeleteStudent
+// ---
+// summary: Supprime un étudiant
+// parameters:
+// - name: id
+//   in: path
+//   description: id de l'étudiant
+//   type: string
+//   required: true
+// - name: student
+//   description: L'étudiant à supprimer
+//   in: body
+//   required: true
+//   schema:
+//     "$ref": "#/definitions/Student"
+// responses:
+//   "200":
+//     "$ref": "#/responses/booleanRes"
+//   "400":
+//     "$ref": "#/responses/badReq"
+//   "404":
+//     "$ref": "#/responses/notFoundReq"
 func (sh StudentsHandlers) DeleteStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func DeleteStudent")
