@@ -27,7 +27,7 @@
         "operationId": "GetAllLanguages",
         "responses": {
           "200": {
-            "$ref": "#/responses/languageRes"
+            "$ref": "#/responses/languagesRes"
           }
         }
       }
@@ -35,7 +35,7 @@
   },
   "definitions": {
     "Language": {
-      "description": "Language request model",
+      "description": "Un language de programmation",
       "type": "object",
       "properties": {
         "Code": {
@@ -59,6 +59,7 @@
           "type": "string"
         },
         "Id": {
+          "description": "L'identifiant de l'étudiant",
           "type": "integer",
           "format": "int64"
         },
@@ -74,15 +75,33 @@
   },
   "responses": {
     "languageRes": {
-      "description": "Language response payload",
+      "description": "Response payload pour un language",
       "schema": {
         "$ref": "#/definitions/Language"
       }
     },
+    "languagesRes": {
+      "description": "Response payload pour une liste de languages",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/Language"
+        }
+      }
+    },
     "studentRes": {
-      "description": "Student response payload",
+      "description": "Response payload pour un étudiant",
       "schema": {
         "$ref": "#/definitions/Student"
+      }
+    },
+    "studentsRes": {
+      "description": "Response payload pour une liste d'étudiants",
+      "schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/Student"
+        }
       }
     }
   }

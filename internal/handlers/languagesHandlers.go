@@ -20,7 +20,7 @@ type LanguagesHandlers struct {
 // summary: Renvoie la liste de tous les languages de prorgammation
 // responses:
 //   "200":
-//     "$ref": "#/responses/languageRes"
+//     "$ref": "#/responses/languagesRes"
 func (lh *LanguagesHandlers) GetAllLanguages(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(" - - - - - - - - - - - ")
 	fmt.Println("func GetAllLanguages")

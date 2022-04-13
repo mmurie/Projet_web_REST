@@ -4,6 +4,7 @@ import "strconv"
 
 // Un étudiant
 type Student struct {
+	//L'identifiant de l'étudiant
 	Id           int    `json:"Id"`
 	FirstName    string `json:"FirstName"`
 	LastName     string `json:"LastName"`
@@ -29,9 +30,16 @@ func (student Student) String() string {
 		"LanguageCode = " + student.LanguageCode
 }
 
-// Student response payload
+// Response payload pour un étudiant
 // swagger:response studentRes
 type swaggStudentRes struct {
 	// in:body
 	Body Student
+}
+
+// Response payload pour une liste d'étudiants
+// swagger:response studentsRes
+type swaggStudentsRes struct {
+	// in:body
+	Body []Student
 }
