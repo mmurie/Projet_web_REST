@@ -104,15 +104,10 @@ func (sh StudentsHandlers) AddStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, string(isOk))
 }
 
-// swagger:operation PUT /students/{id} Students EditStudent
+// swagger:operation PUT /students Students EditStudent
 // ---
 // summary: Modifie un étudiant
 // parameters:
-// - name: id
-//   in: path
-//   description: id de l'étudiant
-//   type: string
-//   required: true
 // - name: student
 //   description: L'étudiant à modifier
 //   in: body
@@ -145,7 +140,7 @@ func (sh StudentsHandlers) EditStudent(w http.ResponseWriter, r *http.Request) {
 
 // swagger:operation DELETE /students/{id} Students DeleteStudent
 // ---
-// summary: Supprime un étudiant
+// summary: Supprime l'étudiant d'id spécifié
 // parameters:
 // - name: id
 //   in: path

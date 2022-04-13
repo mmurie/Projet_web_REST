@@ -34,6 +34,35 @@
           }
         }
       },
+      "put": {
+        "tags": [
+          "Languages"
+        ],
+        "summary": "Modifie un langage de progammation",
+        "operationId": "EditLanguage",
+        "parameters": [
+          {
+            "description": "Le langage à modifier",
+            "name": "language",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Language"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/booleanRes"
+          },
+          "400": {
+            "$ref": "#/responses/badReq"
+          },
+          "404": {
+            "$ref": "#/responses/notFoundReq"
+          }
+        }
+      },
       "post": {
         "tags": [
           "Languages"
@@ -89,47 +118,11 @@
           }
         }
       },
-      "put": {
-        "tags": [
-          "Languages"
-        ],
-        "summary": "Modifie un langage de progammation",
-        "operationId": "EditLanguage",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "code du langage",
-            "name": "id",
-            "in": "path",
-            "required": true
-          },
-          {
-            "description": "Le langage à modifier",
-            "name": "language",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Language"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/responses/booleanRes"
-          },
-          "400": {
-            "$ref": "#/responses/badReq"
-          },
-          "404": {
-            "$ref": "#/responses/notFoundReq"
-          }
-        }
-      },
       "delete": {
         "tags": [
           "Languages"
         ],
-        "summary": "Supprime un langage de progammation",
+        "summary": "Supprime le langage ayant le code spécifié",
         "operationId": "DeleteLanguage",
         "parameters": [
           {
@@ -175,6 +168,35 @@
           },
           "400": {
             "$ref": "#/responses/badReq"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Modifie un étudiant",
+        "operationId": "EditStudent",
+        "parameters": [
+          {
+            "description": "L'étudiant à modifier",
+            "name": "student",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/booleanRes"
+          },
+          "400": {
+            "$ref": "#/responses/badReq"
+          },
+          "404": {
+            "$ref": "#/responses/notFoundReq"
           }
         }
       },
@@ -233,47 +255,11 @@
           }
         }
       },
-      "put": {
-        "tags": [
-          "Students"
-        ],
-        "summary": "Modifie un étudiant",
-        "operationId": "EditStudent",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "id de l'étudiant",
-            "name": "id",
-            "in": "path",
-            "required": true
-          },
-          {
-            "description": "L'étudiant à modifier",
-            "name": "student",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Student"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/responses/booleanRes"
-          },
-          "400": {
-            "$ref": "#/responses/badReq"
-          },
-          "404": {
-            "$ref": "#/responses/notFoundReq"
-          }
-        }
-      },
       "delete": {
         "tags": [
           "Students"
         ],
-        "summary": "Supprime un étudiant",
+        "summary": "Supprime l'étudiant d'id spécifié",
         "operationId": "DeleteStudent",
         "parameters": [
           {

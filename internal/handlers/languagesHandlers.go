@@ -99,15 +99,10 @@ func (lh *LanguagesHandlers) AddLanguage(w http.ResponseWriter, r *http.Request)
 	fmt.Fprintf(w, string(isOk))
 }
 
-// swagger:operation PUT /languages/{code} Languages EditLanguage
+// swagger:operation PUT /languages Languages EditLanguage
 // ---
 // summary: Modifie un langage de progammation
 // parameters:
-// - name: id
-//   in: path
-//   description: code du langage
-//   type: string
-//   required: true
 // - name: language
 //   description: Le langage à modifier
 //   in: body
@@ -141,7 +136,7 @@ func (lh *LanguagesHandlers) EditLanguage(w http.ResponseWriter, r *http.Request
 
 // swagger:operation DELETE /languages/{code} Languages DeleteLanguage
 // ---
-// summary: Supprime un langage de progammation
+// summary: Supprime le langage ayant le code spécifié
 // parameters:
 // - name: id
 //   in: path
