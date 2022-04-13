@@ -71,11 +71,6 @@ func (lh *LanguagesHandlers) GetLanguage(w http.ResponseWriter, r *http.Request)
 // ---
 // summary: Ajoute un nouveau langage de progammation
 // parameters:
-// - name: id
-//   in: path
-//   description: code du langage
-//   type: string
-//   required: true
 // - name: language
 //   description: Le langage à ajouter
 //   in: body

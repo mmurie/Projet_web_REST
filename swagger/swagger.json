@@ -42,13 +42,6 @@
         "operationId": "AddLanguage",
         "parameters": [
           {
-            "type": "string",
-            "description": "code du langage",
-            "name": "id",
-            "in": "path",
-            "required": true
-          },
-          {
             "description": "Le langage à ajouter",
             "name": "language",
             "in": "body",
