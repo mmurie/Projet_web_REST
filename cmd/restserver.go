@@ -113,6 +113,10 @@ func main() {
 	languageHandlers.DAO = leLanguageDAO
 	languageHandlers.InitializeLanguagesRoutes(r)
 
+	//Route pour la documentation
+	fs := http.FileServer(http.Dir("./swagger"))
+	r.PathPrefix("/docs/").Handler(http.StripPrefix("/docs/", fs))
+
 	err := http.ListenAndServe(":8000", r)
 
 	if err != nil {
