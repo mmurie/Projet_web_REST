@@ -31,6 +31,7 @@ func (sh StudentsHandlers) GetAllStudents(w http.ResponseWriter, r *http.Request
 	jsonString, err := json.Marshal(sh.DAO.FindAll())
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	fmt.Fprintf(w, string(jsonString))
@@ -62,11 +63,13 @@ func (sh StudentsHandlers) GetStudent(w http.ResponseWriter, r *http.Request) {
 	id_int, err := strconv.Atoi(id)
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	jsonString, err := json.Marshal(sh.DAO.Find(id_int))
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	fmt.Fprintf(w, string(jsonString))
@@ -99,8 +102,10 @@ func (sh StudentsHandlers) AddStudent(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
+	w.WriteHeader(201)
 	fmt.Fprintf(w, string(isOk))
 }
 
@@ -133,6 +138,7 @@ func (sh StudentsHandlers) EditStudent(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	fmt.Fprintf(w, string(isOk))
@@ -170,12 +176,14 @@ func (sh StudentsHandlers) DeleteStudent(w http.ResponseWriter, r *http.Request)
 	id_int, err := strconv.Atoi(id)
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	isOk, err := json.Marshal(sh.DAO.Delete(id_int))
 
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	fmt.Fprintf(w, string(isOk))

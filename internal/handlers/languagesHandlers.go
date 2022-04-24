@@ -30,6 +30,7 @@ func (lh *LanguagesHandlers) GetAllLanguages(w http.ResponseWriter, r *http.Requ
 	jsonString, err := json.Marshal(lh.DAO.FindAll())
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	fmt.Fprintf(w, string(jsonString))
@@ -62,6 +63,7 @@ func (lh *LanguagesHandlers) GetLanguage(w http.ResponseWriter, r *http.Request)
 	jsonString, err := json.Marshal(lh.DAO.Find(code))
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	fmt.Fprintf(w, string(jsonString))
@@ -94,8 +96,10 @@ func (lh *LanguagesHandlers) AddLanguage(w http.ResponseWriter, r *http.Request)
 
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
+	w.WriteHeader(201)
 	fmt.Fprintf(w, string(isOk))
 }
 
@@ -128,10 +132,10 @@ func (lh *LanguagesHandlers) EditLanguage(w http.ResponseWriter, r *http.Request
 
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	fmt.Fprintf(w, string(isOk))
-
 }
 
 // swagger:operation DELETE /languages/{code} Languages DeleteLanguage
@@ -167,6 +171,7 @@ func (lh *LanguagesHandlers) DeleteLanguage(w http.ResponseWriter, r *http.Reque
 
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	fmt.Fprintf(w, string(isOk))
